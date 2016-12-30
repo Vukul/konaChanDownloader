@@ -14,6 +14,8 @@ if input('Safe filter? y/n:  ') is 'y':
 if input('Random pages? y/n:  ') is 'y':
     ranPage = True
 
+tagsToUrl = '+' + input('Tags? Press enter for none:  ').replace(' ', '+')
+
 def pictures(max_page):
     os.system('cls')
     print('DOWNLOADING')
@@ -23,25 +25,26 @@ def pictures(max_page):
         url = 'http://konachan.com/post?page='
         url_safe = '&tags=rating%3Asafe'
         url_unsafe = '&tags=%2A'
+        imageNumber = 0
 
         if filter:
             if ranPage:
-                source_code = requests.get(url + str(random.randrange(1, 6331)) + url_safe)
+                source_code = requests.get(url + str(random.randrange(1, 6331)) + url_safe + tagsToUrl)
             else:
-                source_code = requests.get(url + str(page) + url_safe)
+                source_code = requests.get(url + str(page) + url_safe + tagsToUrl)
         elif filter is False:
             if ranPage:
-                source_code = requests.get(url + str(random.randrange(1, 6331)) + url_unsafe)
+                source_code = requests.get(url + str(random.randrange(1, 6331)) + url_unsafe + tagsToUrl)
             else:
-                source_code = requests.get(url + str(page) + url_unsafe)
+                source_code = requests.get(url + str(page) + url_unsafe + tagsToUrl)
 
         plain_text = source_code.text
         soup = BeautifulSoup(plain_text, 'html.parser')
         for link in soup.find_all('a', 'directlink'):
             href = 'http:' + link.get('href')
             print(href + '\n')
-            name = random.randrange(0, 10000)
-            full_name = str(name) + ".jpg"
+            full_name = str(imageNumber) + ".jpg"
+            imageNumber += 1
             urllib.request.urlretrieve(href, full_name)
         page += 1
 
