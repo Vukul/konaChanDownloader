@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-import random
 import urllib.request
 
 safeFilter = False
