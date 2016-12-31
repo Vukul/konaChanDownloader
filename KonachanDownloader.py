@@ -13,12 +13,13 @@ def pictures(max_page):
     print('\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n DOWNLOADING')
     print('------------')
     page = 1
+    imagenumber = 0
+    
     while page <= max_page:
         url = 'http://konachan.com/post?page='
         url_safe = '&tags=rating%3Asafe'
         url_unsafe = '&tags=%2A'
         url_full = ''
-        imageNumber = 0
 
         if safeFilter:
             url_full = str(url + str(page) + url_safe + tagsToUrl)
@@ -31,14 +32,9 @@ def pictures(max_page):
         for link in soup.find_all('a', 'directlink'):
             href = 'http:' + link.get('href')
             print(href + '\n')
-            full_name = str(imageNumber) + ".jpg"
-            imageNumber += 1
+            full_name = str(imagenumber) + ".jpg"
+            imagenumber += 1
             urllib.request.urlretrieve(href, full_name)
         page += 1
 
 pictures(pages)
-
-
-
-
-
