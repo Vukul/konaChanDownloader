@@ -28,8 +28,7 @@ def pictures(max_page):
             imagenumber += 1
             urllib.request.urlretrieve(href, full_name)
         page += 1
-
-pictures(pages)
+        
 
 def main()
     safeFilter = False
@@ -37,6 +36,7 @@ def main()
     if input('Safe filter? y/n:  ') is 'y':
         safeFilter = True
     tagsToUrl = '+' + input('Tags? Press enter for none:  ').replace(' ', '+')
+    pictures(pages)
 
 if __name__ = "__main__"
     main()
