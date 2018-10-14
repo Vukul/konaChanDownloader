@@ -1,14 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib.request
 
-safeFilter = False
-
-pages = int(input('How many pages to download: '))
-if input('Safe filter? y/n:  ') is 'y':
-    safeFilter = True
-
-tagsToUrl = '+' + input('Tags? Press enter for none:  ').replace(' ', '+')
-
 def pictures(max_page):
     print('\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n DOWNLOADING')
     print('------------')
@@ -38,3 +30,13 @@ def pictures(max_page):
         page += 1
 
 pictures(pages)
+
+def main()
+    safeFilter = False
+    pages = int(input('How many pages to download: '))
+    if input('Safe filter? y/n:  ') is 'y':
+        safeFilter = True
+    tagsToUrl = '+' + input('Tags? Press enter for none:  ').replace(' ', '+')
+
+if __name__ = "__main__"
+    main()
